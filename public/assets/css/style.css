@@ -767,14 +767,20 @@ input.error {
   list-style: none;
 }
 
-.prerequisite-check{
-  display: inline-block;
+.prerequisite-list li{
+  margin-bottom: 5px;
 }
 
 .prerequisite-check-img{
-  width: 10px;
+  width: 20px;
+  margin-right: 10px;
   display: inline;
-  align-items: center;
+  vertical-align: middle;
+}
+
+.prerequisite-check-text{
+  display: inline;
+  vertical-align: middle;
 }
 
 .prerequisite-status-container{
@@ -791,8 +797,8 @@ input.error {
 }
 
 .prerequisite-status-container img{
-  display: inline;
   width: 30px;
+  display: inline;
   vertical-align: middle;
 }
 
@@ -836,5 +842,30 @@ button{
   animation-iteration-count: infinite;
   animation-timing-function: cubic-bezier(.5, 0, 1, 1);
   animation-duration: 0.7s;
+}
+
+.terms-container{
+  height: 500px;
+  overflow: scroll;
+  padding: 20px;
+}
+
+.terms-checkbox{
+  width: 15px;
+  display: inline;
+  vertical-align: middle;
+}
+
+.terms-checkbox-label{
+  display: inline;
+  vertical-align: middle;
+}
+
+.installation-container{
+  background-color: #ffffff;
+  width: 50%;
+  height: auto;
+  border-radius: 6px;
+  padding: 20px
 }
 /*# sourceMappingURL=style.css.map */
