@@ -777,4 +777,22 @@ input.error {
   align-items: center;
 }
 
+.prerequisite-status-container{
+  width: 450px;
+  height: fit-content;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+  padding: 25px;
+}
+
+.prerequisite-status-container h4{
+  display: inline;
+  vertical-align: middle;
+}
+
+.prerequisite-status-container img{
+  display: inline;
+  width: 30px;
+  vertical-align: middle;
+}
 /*# sourceMappingURL=style.css.map */

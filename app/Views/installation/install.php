@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="author" content="colorlib.com">
+    <meta name="author" content="colorlib.com">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sign Up Form</title>
 
@@ -48,6 +48,14 @@
                         <h2>Check prerequisite</h2>
                         <p class="desc">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
                         <div class="fieldset-content">
+                            <div class="prerequisite-status-container">
+                                <img src="./assets/images/check-mark.png" alt="Success"/>    
+                                <h4>  All requirements met!! Proceed to next step.</h4>
+                            </div>
+                            <div class="prerequisite-status-container">
+                                <img src="./assets/images/cross-icon.png" alt="Failure"/>    
+                                <h4>  Check requirements are met!!</h4>
+                            </div>
                             <div class="prerequisite-container">
                                 <ul class="prerequisite-list">
                                     <li class="prerequisite-check">
@@ -55,7 +63,7 @@
                                         PHP version > 7.4 or 8.0
                                     </li>
                                     <li>
-                                        <img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">    
+                                        <img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">
                                         Intl extension enabled
                                     </li>
                                     <li>
@@ -67,7 +75,7 @@
                                         Writable folder is writable
                                     </li>
                                     <li>
-                                    <img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">
+                                        <img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">
                                         Public folder is accessible
                                     </li>
                                 </ul>
@@ -75,12 +83,29 @@
                         </div>
                     </fieldset>
 
-                    <h3></h3>
+                    <h3>Application Config</h3>
                     <fieldset>
-                        <h2></h2>
-                        <p class="desc"></p>
+                        <h2>Application Configuration</h2>
+                        <p class="desc">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
                         <div class="fieldset-content">
-                            
+                        <div class="form-group">
+                                <label for="app_name" class="form-label">Application Name</label>
+                                <input type="text" name="app_name" id="app_name" />
+                            </div>
+                            <div class="form-group">
+                                <label for="app_url" class="form-label">Application URL</label>
+                                <input type="text" name="app_url" id="app_url" />
+                                <span class="text-input">Example :<span> http://example.com/</span></span>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <h3>Database Config</h3>
+                    <fieldset>
+                        <h2>Database configuration</h2>
+                        <p class="desc">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
+                        <div class="fieldset-content">
+
                         </div>
                     </fieldset>
 
@@ -89,7 +114,7 @@
                         <h2></h2>
                         <p class="desc"></p>
                         <div class="fieldset-content">
-                            
+
                         </div>
                     </fieldset>
 
@@ -98,16 +123,7 @@
                         <h2></h2>
                         <p class="desc"></p>
                         <div class="fieldset-content">
-                            
-                        </div>
-                    </fieldset>
 
-                    <h3></h3>
-                    <fieldset>
-                        <h2></h2>
-                        <p class="desc"></p>
-                        <div class="fieldset-content">
-                            
                         </div>
                     </fieldset>
                 </div>
