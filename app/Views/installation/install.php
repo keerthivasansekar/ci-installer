@@ -107,19 +107,23 @@
                         <div class="fieldset-content">
                             <div class="form-group">
                                 <label for="db_host" class="form-label">Database Host</label>
-                                <input type="text" name="db_host" id="db_host" />
+                                <input type="text" name="db_host" id="db_host" value="localhost"/>
                             </div>
                             <div class="form-group">
                                 <label for="db_name" class="form-label">Database Name</label>
-                                <input type="text" name="db_name" id="db_name" />
+                                <input type="text" name="db_name" id="db_name" value="fakery"/>
                             </div>
                             <div class="form-group">
                                 <label for="db_user" class="form-label">Database User</label>
-                                <input type="text" name="db_user" id="db_user" />
+                                <input type="text" name="db_user" id="db_user" value="root"/>
                             </div>
                             <div class="form-group">
                                 <label for="db_password" class="form-label">Database Password</label>
                                 <input type="text" name="db_password" id="db_password" />
+                            </div>
+                            <div class="form-group">
+                                <label for="db_port" class="form-label">Database Port</label>
+                                <input type="text" name="db_port" id="db_port" value="3360" />
                             </div>
                             <div class="form-group">
                                 <button type="button" id="db_test_connect">Test Connection</button>

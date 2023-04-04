@@ -33,6 +33,9 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('install', 'InstallationController::index');
+$routes->get('create-env', 'InstallationController::createEnvFile');
+$routes->get('prerequisite-check', 'InstallationController::prerequisiteCheck');
+$routes->get('database-check', 'InstallationController::databaseCheck');
 
 /*
  * --------------------------------------------------------------------
