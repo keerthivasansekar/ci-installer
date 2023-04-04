@@ -301,7 +301,7 @@ input {
   position: absolute;
   content: '';
   width: 2px;
-  height: 180px;
+  height: 480px;
   background: #ebebeb;
   left: 64px;
   top: 50%;
@@ -753,6 +753,28 @@ input.error {
 .intro-container{
   height: 400px;
   overflow: scroll;
+}
+
+.prerequisite-container{
+  height: 150px;
+  padding: 20px;
+  background-color: #fff;
+  z-index: 99;
+  box-shadow: #666;
+}
+
+.prerequisite-list{
+  list-style: none;
+}
+
+.prerequisite-check{
+  display: inline-block;
+}
+
+.prerequisite-check-img{
+  width: 10px;
+  display: inline;
+  align-items: center;
 }
 
 /*# sourceMappingURL=style.css.map */
