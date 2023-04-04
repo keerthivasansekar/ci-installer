@@ -49,12 +49,12 @@
                         <p class="desc">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
                         <div class="fieldset-content">
                             <div class="prerequisite-status-container">
-                                <img src="./assets/images/check-mark.png" alt="Success"/>    
-                                <h4>  All requirements met!! Proceed to next step.</h4>
+                                <img src="./assets/images/check-mark.png" alt="Success" />
+                                <h4> All requirements met!! Proceed to next step.</h4>
                             </div>
                             <div class="prerequisite-status-container">
-                                <img src="./assets/images/cross-icon.png" alt="Failure"/>    
-                                <h4>  Check requirements are met!!</h4>
+                                <img src="./assets/images/cross-icon.png" alt="Failure" />
+                                <h4> Check requirements are met!!</h4>
                             </div>
                             <div class="prerequisite-container">
                                 <ul class="prerequisite-list">
@@ -88,7 +88,7 @@
                         <h2>Application Configuration</h2>
                         <p class="desc">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
                         <div class="fieldset-content">
-                        <div class="form-group">
+                            <div class="form-group">
                                 <label for="app_name" class="form-label">Application Name</label>
                                 <input type="text" name="app_name" id="app_name" />
                             </div>
@@ -105,7 +105,27 @@
                         <h2>Database configuration</h2>
                         <p class="desc">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
                         <div class="fieldset-content">
-
+                            <div class="form-group">
+                                <label for="db_host" class="form-label">Database Host</label>
+                                <input type="text" name="db_host" id="db_host" />
+                            </div>
+                            <div class="form-group">
+                                <label for="db_name" class="form-label">Database Name</label>
+                                <input type="text" name="db_name" id="db_name" />
+                            </div>
+                            <div class="form-group">
+                                <label for="db_user" class="form-label">Database User</label>
+                                <input type="text" name="db_user" id="db_user" />
+                            </div>
+                            <div class="form-group">
+                                <label for="db_password" class="form-label">Database Password</label>
+                                <input type="text" name="db_password" id="db_password" />
+                            </div>
+                            <div class="form-group">
+                                <button type="button" id="db_test_connect">Test Connection</button>
+                                <span class="text-input success-message bliking-text">Connection Success</span>
+                                <span class="text-input failure-message bliking-text">Connection Failed</span>
+                            </div>
                         </div>
                     </fieldset>
 

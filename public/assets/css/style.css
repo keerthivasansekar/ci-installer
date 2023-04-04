@@ -795,4 +795,46 @@ input.error {
   width: 30px;
   vertical-align: middle;
 }
+
+button{
+  width:140px;
+  height: 50px;
+  color: #fff;
+  background-color: #4966b1;
+  border: none;
+  justify-content: center;
+  font-family: 'Roboto Slab';
+  font-weight: 600;
+}
+
+.success-message{
+  color: #f63726;
+  font-size: medium;
+}
+
+.failure-message{
+  color: darkgreen;
+  font-size: medium;
+}
+
+@-webkit-keyframes blinker {
+  from { opacity: 0.0; }
+  to { opacity: 1.0; }
+}
+
+@keyframes blinker {
+  from { opacity: 0.0; }
+  to { opacity: 1.0; }
+}
+
+.bliking-text {
+  -webkit-animation-name: blinker;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: cubic-bezier(.5, 0, 1, 1);
+  -webkit-animation-duration: 0.7s;
+  animation-name: blinker;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(.5, 0, 1, 1);
+  animation-duration: 0.7s;
+}
 /*# sourceMappingURL=style.css.map */
