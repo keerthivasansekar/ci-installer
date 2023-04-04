@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="author" content="colorlib.com">
+    <meta name="author" content="colorlib.com">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sign Up Form</title>
 
@@ -43,72 +43,69 @@
                         </div>
                     </fieldset>
 
-                    <h3>Connect Bank Account</h3>
+                    <h3>Prerequisites</h3>
                     <fieldset>
-                        <h2>Connect Bank Account</h2>
-                        <p class="desc">Please enter your infomation and proceed to next step so we can build your account</p>
+                        <h2>Check prerequisite</h2>
+                        <p class="desc">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
                         <div class="fieldset-content">
+                            <div class="prerequisite-status-container">
+                                <img src="./assets/images/check-mark.png" alt="Success"/>    
+                                <h4>  All requirements met!! Proceed to next step.</h4>
+                            </div>
+                            <div class="prerequisite-status-container">
+                                <img src="./assets/images/cross-icon.png" alt="Failure"/>    
+                                <h4>  Check requirements are met!!</h4>
+                            </div>
+                            <div class="prerequisite-container">
+                                <ul class="prerequisite-list">
+                                    <li class="prerequisite-check">
+                                        <img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">
+                                        PHP version > 7.4 or 8.0
+                                    </li>
+                                    <li>
+                                        <img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">
+                                        Intl extension enabled
+                                    </li>
+                                    <li>
+                                        <img class="prerequisite-check-img" src="./assets/images/cross-icon.png" alt="">
+                                        Mbstring extension enabled
+                                    </li>
+                                    <li>
+                                        <img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">
+                                        Writable folder is writable
+                                    </li>
+                                    <li>
+                                        <img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">
+                                        Public folder is accessible
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <h3>Application Config</h3>
+                    <fieldset>
+                        <h2>Application Configuration</h2>
+                        <p class="desc">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
+                        <div class="fieldset-content">
+                        <div class="form-group">
+                                <label for="app_name" class="form-label">Application Name</label>
+                                <input type="text" name="app_name" id="app_name" />
+                            </div>
                             <div class="form-group">
-                                <label for="find_bank" class="form-label">Find Your Bank</label>
-                                <div class="form-find">
-                                    <input type="text" name="find_bank" id="find_bank" placeholder="Ex. Techcombank" />
-                                    <input type="submit" value="Search" class="submit">
-                                    <span class="form-icon"><i class="zmdi zmdi-search"></i></span>
-                                </div>
-                            </div>
-                            <div class="choose-bank">
-                                <p class="choose-bank-desc">Or choose from these popular bank</p>
-                                <div class="form-radio-flex">
-                                    <div class="form-radio-item">
-                                        <input type="radio" name="choose_bank" id="bank_1" value="bank_1" checked="checked" />
-                                        <label for="bank_1"><img src="./assets/images/bank-1.jpg" alt=""></label>
-                                    </div>
-
-                                    <div class="form-radio-item">
-                                        <input type="radio" name="choose_bank" id="bank_2" value="bank_2" />
-                                        <label for="bank_2"><img src="./assets/images/bank-2.jpg" alt=""></label>
-                                    </div>
-
-                                    <div class="form-radio-item">
-                                        <input type="radio" name="choose_bank" id="bank_3" value="bank_3" />
-                                        <label for="bank_3"><img src="./assets/images/bank-3.jpg" alt=""></label>
-                                    </div>
-
-                                    <div class="form-radio-item">
-                                        <input type="radio" name="choose_bank" id="bank_4" value="bank_4" />
-                                        <label for="bank_4"><img src="./assets/images/bank-4.jpg" alt=""></label>
-                                    </div>
-
-                                    <div class="form-radio-item">
-                                        <input type="radio" name="choose_bank" id="bank_5" value="bank_5" />
-                                        <label for="bank_5"><img src="./assets/images/bank-5.jpg" alt=""></label>
-                                    </div>
-
-                                    <div class="form-radio-item">
-                                        <input type="radio" name="choose_bank" id="bank_6" value="bank_6" />
-                                        <label for="bank_6"><img src="./assets/images/bank-6.jpg" alt=""></label>
-                                    </div>
-                                    
-                                    <div class="form-radio-item">
-                                        <input type="radio" name="choose_bank" id="bank_7" value="bank_7" />
-                                        <label for="bank_7"><img src="./assets/images/bank-7.jpg" alt=""></label>
-                                    </div>
-
-                                    <div class="form-radio-item">
-                                        <input type="radio" name="choose_bank" id="bank_8" value="bank_8" />
-                                        <label for="bank_8"><img src="./assets/images/bank-8.jpg" alt=""></label>
-                                    </div>
-                                </div>
+                                <label for="app_url" class="form-label">Application URL</label>
+                                <input type="text" name="app_url" id="app_url" />
+                                <span class="text-input">Example :<span> http://example.com/</span></span>
                             </div>
                         </div>
                     </fieldset>
 
-                    <h3></h3>
+                    <h3>Database Config</h3>
                     <fieldset>
-                        <h2></h2>
-                        <p class="desc"></p>
+                        <h2>Database configuration</h2>
+                        <p class="desc">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
                         <div class="fieldset-content">
-                            
+
                         </div>
                     </fieldset>
 
@@ -117,7 +114,7 @@
                         <h2></h2>
                         <p class="desc"></p>
                         <div class="fieldset-content">
-                            
+
                         </div>
                     </fieldset>
 
@@ -126,16 +123,7 @@
                         <h2></h2>
                         <p class="desc"></p>
                         <div class="fieldset-content">
-                            
-                        </div>
-                    </fieldset>
 
-                    <h3></h3>
-                    <fieldset>
-                        <h2></h2>
-                        <p class="desc"></p>
-                        <div class="fieldset-content">
-                            
                         </div>
                     </fieldset>
                 </div>
