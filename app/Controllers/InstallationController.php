@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use mysqli;
 
 class InstallationController extends BaseController
 {
@@ -25,67 +26,78 @@ class InstallationController extends BaseController
 
     public function prerequisiteCheck()
     {
+        $result = [];
+
         if (phpversion() >= 7.4) {
-            echo "PHP version is more than 7.4, Current version is " . phpversion() . "<br>";
+            $result['php_version'] = true;
         } else {
-            echo "PHP version is not more than 7.4, Current version is " . phpversion() . "<br>";
+            $result['php_version'] = false;
         }
 
         if (extension_loaded('intl')) {
-            echo "INTL extension enabled and loaded<br>";
+            $result['intl'] = true;
         } else {
-            echo "INTL extension not enabled or loaded<br>";
+            $result['intl'] = false;
         }
 
         if (extension_loaded('mbstring')) {
-            echo "MBString extension enabled and loaded<br>";
+            $result['mbstring'] = true;
         } else {
-            echo "MBString extension not enabled or loaded<br>";
+            $result['mbstring'] = false;
         }
 
         if (is_writable('../writable')) {
-            echo "Writable folder is writable<br>";
+            $result['writable_folder'] = true;
         } else {
-            echo "Writable folder is not writable<br>";
+            $result['writable_folder'] = false;
         }
 
         if (is_writable('../public')) {
-            echo "Public folder is accessible<br>";
+            $result['public_folder'] = true;
         } else {
-            echo "Public folder is not accessible<br>";
+            $result['public_folder'] = false;
         }
+
+        $result['overall'] = true;
+
+        foreach ($result as $key => $value) {
+            if ($value === false) {
+                $result['overall'] = false;
+            }
+        }
+
+        return json_encode($result);
     }
 
     public function databaseCheck()
     {
-        $custom = [
-            'DSN'      => '',
-            'hostname' => 'localhost',
-            'username' => 'root',
-            'password' => '',
-            'database' => '',
-            'DBDriver' => 'MySQLi',
-            'DBPrefix' => '',
-            'pConnect' => false,
-            'DBDebug'  => true,
-            'charset'  => 'utf8',
-            'DBCollat' => 'utf8_general_ci',
-            'swapPre'  => '',
-            'encrypt'  => false,
-            'compress' => false,
-            'strictOn' => false,
-            'failover' => [],
-            'port'     => 3306,
-        ];
-        $database = \Config\Database::connect($custom);
-        $connection = \CodeIgniter\Database\Config::getConnections();
+        try {
+            $db_host = $this->request->getPost('db_host');
+            $db_name = $this->request->getPost('db_name');
+            $db_user = $this->request->getPost('db_user');
+            $db_pass = $this->request->getPost('db_pass');
 
-        if ($connection) {
-            echo "Database connected";
-        } else {
-            echo "Database connection error";
+            $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+            if (mysqli_connect_errno()){
+                return json_encode(['status' => false]);
+            } else {
+                return json_encode(['status' => true]);
+            }
+        } catch (\Exception $e) {
+            return json_encode(['status' => false]);
         }
+        
+    }
 
-        $database->close();
+    public function createInstallLock()
+    {
+        helper('filesystem');
+        $data = "";
+
+        if (!write_file('../INSTALL.lock', $data)) {
+            echo 'Unable to write the file';
+        } else {
+            echo 'File written!';
+        }
     }
 }

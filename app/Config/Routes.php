@@ -32,10 +32,16 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('install', 'InstallationController::index');
-$routes->get('create-env', 'InstallationController::createEnvFile');
-$routes->get('prerequisite-check', 'InstallationController::prerequisiteCheck');
-$routes->get('database-check', 'InstallationController::databaseCheck');
+
+
+// Install Group
+$routes->group('install', ['filter' => 'installcheck'], function ($routes){
+    $routes->add('/', 'InstallationController::index');
+    $routes->add('prerequisite-check', 'InstallationController::prerequisiteCheck');
+    $routes->add('create-env', 'InstallationController::createEnvFile');
+    $routes->add('database-check', 'InstallationController::databaseCheck');
+    $routes->add('create-install-lock', 'InstallationController::createInstallLock');
+});
 
 /*
  * --------------------------------------------------------------------

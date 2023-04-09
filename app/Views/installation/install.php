@@ -48,36 +48,14 @@
                         <h2>Check prerequisite</h2>
                         <p class="desc">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
                         <div class="fieldset-content">
-                            <div class="prerequisite-status-container">
-                                <img src="./assets/images/check-mark.png" alt="Success" />
-                                <h4> All requirements met!! Proceed to next step.</h4>
-                            </div>
-                            <div class="prerequisite-status-container">
-                                <img src="./assets/images/cross-icon.png" alt="Failure" />
-                                <h4> Check requirements are met!!</h4>
-                            </div>
+                            <div class="prerequisite-status-container" id="prerequisite-status"></div>
                             <div class="prerequisite-container">
                                 <ul class="prerequisite-list">
-                                    <li>
-                                        <img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">
-                                        <span class="prerequisite-check-text">PHP version > 7.4 or 8.0</span>
-                                    </li>
-                                    <li>
-                                        <img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">
-                                        <span class="prerequisite-check-text">Intl extension enabled</span>
-                                    </li>
-                                    <li>
-                                        <img class="prerequisite-check-img" src="./assets/images/cross-icon.png" alt="">
-                                        <span class="prerequisite-check-text">Mbstring extension enabled</span>
-                                    </li>
-                                    <li>
-                                        <img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">
-                                        <span class="prerequisite-check-text">Writable folder is writable</span>
-                                    </li>
-                                    <li>
-                                        <img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">
-                                        <span class="prerequisite-check-text">Public folder is accessible</span>
-                                    </li>
+                                    <li id="phpCheck"></li>
+                                    <li id="intlCheck"></li>
+                                    <li id="mbstringCheck"></li>
+                                    <li id="writableFolderCheck"></li>
+                                    <li id="publicFolderCheck"></li>
                                 </ul>
                             </div>
                         </div>
@@ -118,17 +96,16 @@
                                 <input type="text" name="db_user" id="db_user" value="root"/>
                             </div>
                             <div class="form-group">
-                                <label for="db_password" class="form-label">Database Password</label>
-                                <input type="text" name="db_password" id="db_password" />
+                                <label for="db_pass" class="form-label">Database Password</label>
+                                <input type="text" name="db_pass" id="db_pass" />
                             </div>
                             <div class="form-group">
                                 <label for="db_port" class="form-label">Database Port</label>
-                                <input type="text" name="db_port" id="db_port" value="3360" />
+                                <input type="text" name="db_port" id="db_port" value="3306" />
                             </div>
                             <div class="form-group">
                                 <button type="button" id="db_test_connect">Test Connection</button>
-                                <span class="text-input success-message bliking-text">Connection Success</span>
-                                <span class="text-input failure-message bliking-text">Connection Failed</span>
+                                <span id="test_db_status" class="text-input bliking-text"></span>
                             </div>
                         </div>
                     </fieldset>
