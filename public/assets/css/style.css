@@ -814,12 +814,12 @@ button{
 }
 
 .success-message{
-  color: #f63726;
+  color: darkgreen;
   font-size: medium;
 }
 
 .failure-message{
-  color: darkgreen;
+  color: #f63726;
   font-size: medium;
 }
 
