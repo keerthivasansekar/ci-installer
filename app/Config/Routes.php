@@ -39,9 +39,12 @@ $routes->group('install', ['filter' => 'installcheck'], function ($routes){
     $routes->add('/', 'InstallationController::index');
     $routes->add('prerequisite-check', 'InstallationController::prerequisiteCheck');
     $routes->add('create-env', 'InstallationController::createEnvFile');
+    $routes->add('create-database', 'InstallationController::createDatabaseTables');
+    $routes->add('create-user', 'InstallationController::createAdminUser');
     $routes->add('database-check', 'InstallationController::databaseCheck');
-    $routes->add('create-install-lock', 'InstallationController::createInstallLock');
+    $routes->add('create-installlock', 'InstallationController::createInstallLock');
 });
+$routes->get('finish-Installation', 'InstallationController::finishInstallation');
 
 /*
  * --------------------------------------------------------------------

@@ -67,12 +67,8 @@
                         <p class="desc">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
                         <div class="fieldset-content">
                             <div class="form-group">
-                                <label for="app_name" class="form-label">Application Name</label>
-                                <input type="text" name="app_name" id="app_name" />
-                            </div>
-                            <div class="form-group">
                                 <label for="app_url" class="form-label">Application URL</label>
-                                <input type="text" name="app_url" id="app_url" />
+                                <input type="text" name="app_url" id="app_url" value=""/>
                                 <span class="text-input">Example :<span> http://example.com/</span></span>
                             </div>
                         </div>
@@ -138,24 +134,24 @@
                         <div class="fieldset-content">
                             <div class="installation-container">
                                 <ul class="prerequisite-list">
-                                    <li>
-                                        <img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">
+                                    <li id="create-env">
+                                        <i class="zmdi zmdi-spinner zmdi-hc-spin"></i>
                                         <span class="prerequisite-check-text">Create .env file</span>
                                     </li>
-                                    <li>
-                                        <img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">
+                                    <li id="create-database-tables">
+                                        <i class="zmdi zmdi-spinner zmdi-hc-spin"></i>
                                         <span class="prerequisite-check-text">Creating database tables</span>
                                     </li>
-                                    <li>
-                                        <img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">
+                                    <li id="create-admin-user">
+                                        <i class="zmdi zmdi-spinner zmdi-hc-spin"></i>
                                         <span class="prerequisite-check-text">Creating admin user</span>
                                     </li>
-                                    <li>
-                                        <img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">
+                                    <li id="create-verify-installation">
+                                        <i class="zmdi zmdi-spinner zmdi-hc-spin"></i>
                                         <span class="prerequisite-check-text">Verifying installation</span>
                                     </li>
-                                    <li>
-                                        <img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">
+                                    <li id="create-install-finished">
+                                        <i class="zmdi zmdi-spinner zmdi-hc-spin"></i>
                                         <span class="prerequisite-check-text">Installation Finished</span>
                                     </li>
                                 </ul>

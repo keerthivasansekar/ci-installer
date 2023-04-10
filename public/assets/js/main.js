@@ -6,9 +6,12 @@
             element.before(error);
         },
         rules: {
-            email: {
-                email: true
-            }
+            app_url: "required",
+            db_host: "required",
+            db_name: "required",
+            db_user: "required",
+            db_port: "required",
+            terms_acceptance: "required",
         },
         onfocusout: function (element) {
             $(element).valid();
@@ -57,11 +60,46 @@
             return form.valid();
         },
         onFinished: function (event, currentIndex) {
-            alert('Submited');
+            if (confirm('Login details\nUsername: admin\nPassword: admin')) {
+                window.location.replace($(location).attr('origin'));
+            } else {
+                alert('Click ok to redirect to main page');
+            }
         },
         onStepChanged: function (event, currentIndex, priorIndex) {
+            if (currentIndex === 2) {
+                setDomainUrl();
+            }
             if (currentIndex === 4) {
                 disableNext();   
+            }
+            if (currentIndex === 5) {
+                removeStatusIcon();
+                setTimeout(
+                    function(){
+                        createEnv();
+                        setTimeout(
+                            function(){
+                                createDatabase();
+                                setTimeout(
+                                    function(){
+                                        createAdminUser();
+                                        setTimeout(
+                                            function(){
+                                                createInstallLockFile();
+                                                setTimeout(
+                                                    function(){
+                                                        finishInstallation();
+                                                    }
+                                                , 5000);
+                                            }
+                                        , 5000);
+                                    }
+                                , 5000);
+                            }
+                        , 5000);
+                    }
+                , 5000);
             }
             return true;
         }
@@ -149,6 +187,19 @@
         });
     }
 
+    function setDomainUrl(){
+        var url = $(location).attr('origin');
+        $('#app_url').val(url);
+    }
+
+    function removeIcon(elementId){
+        $('#'+elementId+' i').remove();
+    }
+
+    function removeStatusIcon(){
+        $('li img').remove();
+    }
+
     $('#db_test_connect').click(function (event) {
         event.preventDefault();
         var data = {
@@ -191,6 +242,108 @@
     function enableNext() {
         var nextButton = $(".actions ul li:nth-child(2) a");
         buttonEnabled = $(".actions ul li:nth-child(2)").removeClass("disabled").attr("aria-disabled", "false");
+    }
+
+    function createEnv(){
+        var data = {
+            'app_url': $('#app_url').val(),
+            'db_host': $('#db_host').val(),
+            'db_name': $('#db_name').val(),
+            'db_user': $('#db_user').val(),
+            'db_pass': $('#db_pass').val(),
+            'db_port': $('#db_port').val(),
+        };
+        $.ajax({
+            url: $(location).attr('origin') + '/install/create-env',
+            type: 'POST',
+            dataType: "json",
+            data: data,
+            success: function (res) {
+                if (res.status) {
+                    removeIcon('create-env');
+                    $('#create-env').prepend('<img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">');
+                } else {
+                    removeIcon('create-env');
+                    $('#create-env').prepend('<img class="prerequisite-check-img" src="./assets/images/cross-icon.png" alt="">');
+                }
+            }
+        });
+    }
+
+    function createDatabase(){
+
+        $.ajax({
+            url: $(location).attr('origin') + '/install/create-database',
+            type: 'GET',
+            dataType: "json",
+            success: function (res) {
+                if (res.status) {
+                    removeIcon('create-database-tables');
+                    $('#create-database-tables').prepend('<img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">');
+                } else {
+                    removeIcon('create-database-tables');
+                    $('#create-database-tables').prepend('<img class="prerequisite-check-img" src="./assets/images/cross-icon.png" alt="">');
+                }
+            }
+        });
+    }
+
+    function createAdminUser(){
+        var data = {
+            'username': 'admin',
+            'password': 'admin',
+            'email': 'admin@admin.com',
+        };
+        $.ajax({
+            url: $(location).attr('origin') + '/install/create-user',
+            type: 'POST',
+            dataType: "json",
+            data: data,
+            success: function (res) {
+                if (res.status) {
+                    removeIcon('create-admin-user');
+                    $('#create-admin-user').prepend('<img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">');
+                } else {
+                    removeIcon('create-admin-user');
+                    $('#create-admin-user').prepend('<img class="prerequisite-check-img" src="./assets/images/cross-icon.png" alt="">');
+                }
+            }
+        });
+    }
+
+    function createInstallLockFile(){
+
+        $.ajax({
+            url: $(location).attr('origin') + '/install/create-installlock',
+            type: 'GET',
+            dataType: "json",
+            success: function (res) {
+                if (res.status) {
+                    removeIcon('create-verify-installation');
+                    $('#create-verify-installation').prepend('<img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">');
+                } else {
+                    removeIcon('create-verify-installation');
+                    $('#create-verify-installation').prepend('<img class="prerequisite-check-img" src="./assets/images/cross-icon.png" alt="">');
+                }
+            }
+        });
+    }
+
+    function finishInstallation(){
+        $.ajax({
+            url: $(location).attr('origin') + '/finish-Installation',
+            type: 'GET',
+            dataType: "json",
+            success: function (res) {
+                if (res.status) {
+                    removeIcon('create-install-finished');
+                    $('#create-install-finished').prepend('<img class="prerequisite-check-img" src="./assets/images/check-mark.png" alt="">');
+                } else {
+                    removeIcon('create-install-finished');
+                    $('#create-install-finished').prepend('<img class="prerequisite-check-img" src="./assets/images/cross-icon.png" alt="">');
+                }
+            }
+        });
     }
 
 })(jQuery);

@@ -3,7 +3,8 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use mysqli;
+use App\Models\UsersModel;
+use Exception;
 
 class InstallationController extends BaseController
 {
@@ -14,13 +15,20 @@ class InstallationController extends BaseController
 
     public function createEnvFile()
     {
+        $app_url = $this->request->getPost('app_url');
+        $db_host = $this->request->getPost('db_host');
+        $db_name = $this->request->getPost('db_name');
+        $db_user = $this->request->getPost('db_user');
+        $db_pass = $this->request->getPost('db_pass');
+        $db_port = $this->request->getPost('db_port');
+
         helper('filesystem');
-        $data = "app.baseURL = 'http://test.loc/'\ndatabase.default.hostname = localhost\ndatabase.default.database = ci4\ndatabase.default.username = root\ndatabase.default.password = root\ndatabase.default.DBDriver = MySQLi\ndatabase.default.DBPrefix =\ndatabase.default.port = 3306";
+        $data = "CI_ENVIRONMENT = development\napp.baseURL = '".$app_url."'\ndatabase.default.hostname = ".$db_host."\ndatabase.default.database = ".$db_name."\ndatabase.default.username = ".$db_user."\ndatabase.default.password = ".$db_pass."\ndatabase.default.DBDriver = MySQLi\ndatabase.default.DBPrefix =\ndatabase.default.port = ".$db_port;
 
         if (!write_file('../.env', $data)) {
-            echo 'Unable to write the file';
+            return json_encode(['status' => false]);
         } else {
-            echo 'File written!';
+            return json_encode(['status' => true]);
         }
     }
 
@@ -83,10 +91,44 @@ class InstallationController extends BaseController
             } else {
                 return json_encode(['status' => true]);
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return json_encode(['status' => false]);
         }
         
+    }
+
+    public function createDatabaseTables(){
+        $migrate = \Config\Services::migrations();
+        try {
+            if ($migrate->latest()) {
+                return json_encode(['status' => true]);
+            } else {
+                return json_encode(['status' => false]);
+            }
+        } catch (Exception $e) {
+            return json_encode(['status' => false]);
+        }
+    }
+
+    public function createAdminUser(){
+        $usersModel = new UsersModel();
+
+        $data = [
+            'user_name' => $this->request->getPost('username'),
+            'user_email' => $this->request->getPost('email'),
+            'user_password' => $this->request->getPost('password'),
+            'user_type_id' => 1,
+            'user_deleted' => 0,
+        ];
+        try {
+            if ($usersModel->save($data)) {
+                return json_encode(['status' => true]);
+            } else {
+                return json_encode(['status' => false]);
+            }
+        } catch (Exception $e) {
+            return json_encode(['status' => false]);
+        }
     }
 
     public function createInstallLock()
@@ -94,10 +136,28 @@ class InstallationController extends BaseController
         helper('filesystem');
         $data = "";
 
-        if (!write_file('../INSTALL.lock', $data)) {
-            echo 'Unable to write the file';
-        } else {
-            echo 'File written!';
+        try {
+            if (!write_file('../INSTALL.lock', $data)) {
+                return json_encode(['status' => false]);
+            } else {
+                return json_encode(['status' => true]);
+            }
+        } catch (Exception $e) {
+            return json_encode(['status' => false]);
+        }
+
+    }
+
+    public function finishInstallation(){
+        try {
+            if (!file_exists('../INSTALL.lock')) {
+                return json_encode(['status' => false]);
+            } else {
+                return json_encode(['status' => true]);
+            }
+            
+        } catch (Exception $e) {
+            return json_encode(['status' => false]);
         }
     }
 }
